@@ -46,15 +46,14 @@ main{
 }
 .my_container .row .my-col{
     justify-content: center;
-    flex: 0 0 calc(100% / 10);
     height: calc(100% / 10);
     display: flex;
     align-items: center;
     border: 1px solid black;
-    font-size: 0.9em;
+    font-size: 0.7em;
 }
 .easy{
-    flex: 0 0 calc(100% / 9);
+    flex: 0 0 calc(100% / 10);
 }
 
 .medium{
