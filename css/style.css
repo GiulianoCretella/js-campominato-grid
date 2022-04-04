@@ -37,17 +37,32 @@ main{
 }
 .my_container .row{
     width: 500px;
+    height: 500px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     
 }
-.my_container .row .my_col{
-    text-align: center;
-    flex: 0 0 10%;
+.my_container .row .my-col{
+    justify-content: center;
+    flex: 0 0 calc(100% / 10);
+    height: calc(100% / 10);
+    display: flex;
+    align-items: center;
     border: 1px solid black;
-    line-height: 45px;
+    font-size: 0.9em;
+}
+.easy{
+    flex: 0 0 calc(100% / 9);
+}
+
+.medium{
+    flex: 0 0 calc(100% / 9);
+   
+}
+.difficult{
+    flex: 0 0 calc(100% / 7);
 }
 .my_col.active{
     background-color:#6495ED;
