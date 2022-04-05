@@ -30,38 +30,27 @@ main{
     background-color: #7EFFD3;
     height: calc(100vh - 90px);
     overflow-y: auto;
+    min-height: 500px;
 }
 .my_container{
     height: 100%;
     position: relative;
 }
-.my_container .row{
+.my_container .main_row{
     width: 500px;
     height: 500px;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
+    margin:0;
 }
 .my_container .row .my-col{
     justify-content: center;
-    height: calc(100% / 10);
     display: flex;
     align-items: center;
     border: 1px solid black;
     font-size: 0.7em;
-}
-.easy{
-    flex: 0 0 calc(100% / 10);
-}
-
-.medium{
-    flex: 0 0 calc(100% / 9);
-   
-}
-.difficult{
-    flex: 0 0 calc(100% / 7);
 }
 .my_col.active{
     background-color:#6495ED;

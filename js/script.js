@@ -1,44 +1,48 @@
-    function stampareGriglia() {
-        let bloccoCentrale = document.querySelector('.my_container');
-        let mainRow = document.querySelector('.main_row');
-        bloccoCentrale.append(mainRow);
-        console.log(bloccoCentrale);
-        let colsCreate = creaColonne();
-        mainRow.innerHTML += colsCreate;
-        bloccoCentrale.append(mainRow);
-    }
     
-    function creaColonne() {
-        let colNumber='';
-        let difficult='';
+     function selezioneLivello() {
+      
         let difficoltà = document.getElementById("difficoltàMenu");
         let indiceOpzione = difficoltà.selectedIndex;
         let opzione = difficoltà.options[indiceOpzione];
         console.log(opzione.value)
+        let colNumber;
+        let colsPerSide;
         if(opzione.value === 'easy'){
             colNumber = 100;
-            difficult = 'easy';
+            colsPerSide = 10;
         } else if(opzione.value === 'medium'){
             colNumber = 81;
-            difficult = 'medium';
-        } else{
+            colsPerSide = 9;
+        } else{ 
             colNumber = 49;
-            difficult = 'difficult';
+            colsPerSide = 7;
         }
-        let cols = ''; 
-        let numeriArray=[];
-        // console.log(numeriArray)
-        let i = 1
-        while(i <= colNumber && numeriArray.length <= colNumber){
-            if(numeriArray.length <= colNumber){
-                numeriArray.push(i)
-                cols+=`<div class="my-col col ${difficult}">${i}</div>`;
-            }
-            i++;
+        console.log (colsPerSide);
+        stampareGriglia(colNumber,colsPerSide);
+    }
+
+    function stampareGriglia(colNumber, colsPerSide) {
+        console.log(colNumber);
+        let bloccoCentrale = document.querySelector('.my_container');
+        bloccoCentrale.innerHTML='';
+        let mainRow = document.createElement('div');
+        mainRow.setAttribute('class','row main_row')
+        for (let i = 1;  i<= colNumber; i++){
+            const cols = stampaCella(i, colsPerSide); 
+            mainRow.append(cols);
         }
-        return cols;
-        
+        bloccoCentrale.append(mainRow);
+    }
+
+    function stampaCella(colNumber,colsPerSide){
+        let cols = document.createElement('div');
+        cols.setAttribute('class', 'col my-col');
+        cols.style.flex = `0 0 calc(100% / ${colsPerSide})`;
+        cols.style.height = `calc(100% / ${colsPerSide})`;
+        cols.innerHTML = `<span> ${colNumber} </span>`;
+        return cols
     }
 
 
-document.getElementById('bottonePlay').addEventListener('click', stampareGriglia);
+document.getElementById('bottonePlay').addEventListener('click', selezioneLivello);
+
